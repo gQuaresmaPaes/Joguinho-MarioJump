@@ -1,3 +1,4 @@
+const clouds = document.querySelector ('.clouds');
 const mario = document.querySelector ('.mario');
 const pipe = document.querySelector ('.pipe');
 
@@ -12,7 +13,10 @@ const jump = () => {
 const loop = setInterval(() => {
 
     const pipePosition = pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px',''); //Condição que determina o fim do game
+    const cloudsPosition = clouds.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px',''); 
+
+    //Condição que determina o fim do game
     
     console.log(marioPosition)
 
@@ -20,14 +24,16 @@ const loop = setInterval(() => {
 
     pipe.style.animation = 'none';
     pipe.style.left = `${pipePosition}px`;
-
+    
     mario.style.animation = 'none';
     mario.style.bottom = `${marioPosition}px`;
 
     mario.src = "Images/game-over.png";
     mario.style.width = "75px";
     mario.style.marginLeft = "50px";
-    
+
+    clouds.style.animation = 'none';
+    clouds.style.left = `${cloudsPosition}px`;
 
     clearInterval(loop);
 
